@@ -1,0 +1,38 @@
+{
+  "$schema": "https://schema.tauri.app/config/2",
+  "productName": "Home Assistant Manager",
+  "version": "0.1.0",
+  "identifier": "it.homeassistant.manager",
+  "build": {
+    "beforeDevCommand": "npm start",
+    "devUrl": "http://127.0.0.1:4200",
+    "beforeBuildCommand": "npm run build",
+    "frontendDist": "../dist/manager/browser"
+  },
+  "app": {
+    "windows": [
+      {
+        "label": "main",
+        "title": "Home Assistant Manager",
+        "width": 1440,
+        "height": 980,
+        "minWidth": 960,
+        "minHeight": 700,
+        "backgroundColor": "#101416"
+      }
+    ],
+    "security": {
+      "csp": "default-src 'self'; img-src 'self' data:; style-src 'self' 'unsafe-inline'; script-src 'self'; connect-src 'self' ipc: http://ipc.localhost"
+    }
+  },
+  "bundle": {
+    "active": true,
+    "targets": [
+      "app"
+    ],
+    "icon": [
+      "icons/icon.png",
+      "icons/icon.icns"
+    ]
+  }
+}

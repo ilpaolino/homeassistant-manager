@@ -1,0 +1,52 @@
+/* Operational states intentionally use vivid semantic colors, independently of the theme palette. */
+:root{--state-light:#ffd400;--state-light-ink:#513900;--state-light-text:#ffe568;--state-light-surface:#302a16;--state-light-border:#d7af00;--state-off-surface:#1c2229;--state-off-border:#526171;--state-off-icon:#35414d;--state-off-ink:#c0cbd7;--state-green:#12a653;--state-red:#e53c48;--state-partial:#ffad26;--state-off-badge:#364351;--state-off-badge-ink:#e1e8f0}
+:root[data-theme="light"]{--state-light-text:#624200;--state-light-surface:#fff7bf;--state-light-border:#dba500;--state-off-surface:#f2f4f7;--state-off-border:#acb7c3;--state-off-icon:#dfe5ec;--state-off-ink:#475666;--state-off-badge:#e0e6ee;--state-off-badge-ink:#334353}
+.switchable-device:not(.device-active):not(.device-offline){background:var(--state-off-surface)}
+.switchable-device .device-icon{background:var(--state-off-icon);border-color:var(--state-off-border);color:var(--state-off-ink)}
+.light-device.device-active:not(.device-offline){background:var(--state-light-surface);box-shadow:inset 4px 0 var(--state-light)}
+.device-cards .light-device.device-active:not(.device-offline){border-color:var(--state-light-border);box-shadow:none}
+.device-cards .switchable-device:not(.device-active):not(.device-offline){border-color:var(--state-off-border)}
+.light-device.device-active:not(.device-offline) .device-icon{background:var(--state-light);border-color:var(--state-light);color:var(--state-light-ink);box-shadow:0 0 0 4px #ffd40014,0 0 19px #ffd40045}
+.light-device.device-active:not(.device-offline) .device-icon svg{stroke-width:2.1}
+.switchable-device.device-active:not(.light-device):not(.device-offline) .device-icon{background:#12a653;border-color:#12a653;color:#fff}
+.device-row .device-state{display:inline-flex;align-items:center;gap:6px;justify-self:start;white-space:nowrap;border-radius:5px;font-size:10px;font-weight:650;padding:5px 8px;background:#ffe1e1;color:#9d1522;line-height:1.2}
+.device-row.device-active .device-state{background:#c8fbd9;color:#075a2c}
+.device-row.light-device .device-state{background:var(--state-off-badge);color:var(--state-off-badge-ink)}
+.device-row.light-device.device-active .device-state{background:#ffdf38;color:#513900}
+.device-state:before{content:'';display:block;width:6px;height:6px;background:currentColor;border-radius:50%;flex-shrink:0}
+.device-row.device-offline .device-state{background:var(--state-off-badge);color:var(--state-off-badge-ink)}
+.device-row.device-offline .device-icon{background:var(--state-off-icon);color:var(--state-off-ink);border-color:var(--state-off-border);box-shadow:none}
+.device-row.device-offline{border-style:dashed}
+.device-row .device-icon,.group-card .group-icon{transition:background .15s,color .15s,box-shadow .15s}
+.device-row .toggle,.group-card .toggle{position:relative;width:46px;height:26px;padding:2px;border:1px solid var(--state-red);background:var(--state-red);border-radius:20px;opacity:1;box-shadow:none;flex-shrink:0}
+.device-row .toggle>span,.group-card .toggle>span{width:20px;height:20px;background:#fff;transform:translateX(0);box-shadow:0 1px 3px #0003;flex-shrink:0}
+.device-row .toggle.on,.group-card .toggle.on{background:var(--state-green);border-color:var(--state-green)}
+.device-row .toggle.on>span,.group-card .toggle.on>span{transform:translateX(20px);background:#fff}
+.device-row.light-device .toggle,.group-card.light-group .toggle{background:#738395;border-color:#738395}
+.device-row.light-device .toggle.on,.group-card.light-group .toggle.on{background:var(--state-light);border-color:var(--state-light-border);box-shadow:0 0 12px #ffd40035}
+.device-row.light-device .toggle.on>span,.group-card.light-group .toggle.on>span{background:var(--state-light-ink)}
+.device-row .toggle:after,.group-card .toggle:after{content:'';position:absolute;inset:-9px -3px}
+.device-row .toggle:disabled,.group-card .toggle:disabled{background:#667383;border-color:#667383;opacity:.5;box-shadow:none}
+.device-row .toggle:disabled>span,.group-card .toggle:disabled>span{background:#d8dfe8}
+.device-cards .device-row{grid-template-rows:38px minmax(0,1fr) 27px}
+.group-card .group-icon{width:37px;height:37px;border-radius:10px;display:grid;place-items:center;color:var(--state-off-ink);background:var(--state-off-icon);border:1px solid var(--state-off-border)}
+.group-card.group-active.light-group{background:var(--state-light-surface);border-color:var(--state-light-border)}
+.group-card.group-active.light-group .group-icon{background:var(--state-light);color:var(--state-light-ink);border-color:var(--state-light);box-shadow:0 0 17px #ffd40040}
+.group-card.group-partial .toggle,.group-card.light-group.group-partial .toggle{background:var(--state-partial);border:1px dashed #885300;box-shadow:none}
+.group-card.group-partial .toggle>span{transform:translateX(10px);background:#573600}
+.group-card .group-state-label{display:inline-flex;gap:5px;align-items:center;border-radius:4px;padding:4px 6px;background:#ffe1e1;color:#9d1522;font-weight:600}
+.group-card.light-group .group-state-label{background:var(--state-off-badge);color:var(--state-off-badge-ink)}
+.group-card.group-active .group-state-label{background:#c8fbd9;color:#075a2c}
+.group-card.group-active.light-group .group-state-label{background:#ffdf38;color:#513900}
+.group-card.group-partial .group-state-label{background:#ffe0a0;color:#653b00}
+.assignment-row.light-device.device-active .device-icon{background:var(--state-light);border-color:var(--state-light);color:var(--state-light-ink);box-shadow:0 0 14px #ffd40035}
+.assignment-row.switchable-device:not(.device-active) .device-icon{background:var(--state-off-icon);border-color:var(--state-off-border);color:var(--state-off-ink)}
+.assignment-row .assignment-device-state{color:var(--muted);font-weight:600}
+.assignment-row.light-device.device-active .assignment-device-state{color:var(--state-light-text)}
+@media(max-width:760px){.device-row .device-state{display:inline-flex;font-size:9px;padding:4px 6px}.device-cards .device-row{grid-template-rows:31px minmax(0,1fr) 27px}.device-cards .device-state{font-size:8px;padding:4px 5px;gap:4px}.device-cards .device-state:before{width:4px;height:4px}.device-row .toggle,.group-card .toggle{width:42px;height:24px}.device-row .toggle>span,.group-card .toggle>span{width:18px;height:18px}.device-row .toggle.on>span,.group-card .toggle.on>span{transform:translateX(18px)}.group-card.group-partial .toggle>span{transform:translateX(9px)}}
+@media(prefers-reduced-motion:reduce){.device-row .device-icon,.group-card .group-icon{transition:none}}
+
+/* Reserve two description lines so switching state cannot move the title or controls. */
+.device-row .device-text small{min-height:2.8em}
+.device-cards .device-text small{min-height:3.3em}
+@media(max-width:760px){.device-cards .device-text small{min-height:3em}}

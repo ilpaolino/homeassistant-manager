@@ -1,0 +1,35 @@
+import { Component, input } from '@angular/core';
+const paths: Record<string,string> = {
+ trash:'M3 6h18 M9 6V3h6v3 M5 6l1 15h12l1-15 M10 10v7 M14 10v7',
+ edit:'m16 3 5 5-12 12-6 1 1-6Z M14 5l5 5',
+ down:'m6 9 6 6 6-6',
+ moon:'M20.9 13A9 9 0 0 1 11 3.1 9 9 0 1 0 20.9 13Z',
+ list:'M8 6h13 M8 12h13 M8 18h13 M3 6h.01 M3 12h.01 M3 18h.01',
+ spark:'m12 3 2.5 6.5L21 12l-6.5 2.5L12 21l-2.5-6.5L3 12l6.5-2.5Z',
+ house:'m3 10 9-7 9 7v10a1 1 0 0 1-1 1h-5v-7H9v7H4a1 1 0 0 1-1-1Z',
+ grid:'M3 3h7v7H3z M14 3h7v7h-7z M3 14h7v7H3z M14 14h7v7h-7z',
+ link:'M10 13a5 5 0 0 0 7 0l3-3a5 5 0 0 0-7-7l-2 2 M14 11a5 5 0 0 0-7 0l-3 3a5 5 0 0 0 7 7l2-2',
+ arrow:'M5 12h14 m-5-5 5 5-5 5',back:'M19 12H5 m5-5-5 5 5 5',chevron:'m9 5 7 7-7 7',
+ check:'m5 12 4 4L19 6',plus:'M12 5v14 M5 12h14',search:'M21 21l-5-5 M18 10a8 8 0 1 1-16 0 8 8 0 0 1 16 0',
+ sofa:'M4 11V7a3 3 0 0 1 3-3h10a3 3 0 0 1 3 3v4 M4 18v3 m16-3v3 M2 12a2 2 0 0 1 4 0v3h12v-3a2 2 0 0 1 4 0v6H2Z',
+ kitchen:'M4 3v6a3 3 0 0 0 6 0V3 M7 3v18 M20 21V3c-5 0-5 10 0 10',
+ monitor:'M3 3h18v13H3z M8 21h8 M12 16v5',door:'M4 21V3h13v18 M2 21h20 M13 12h.01',
+ bed:'M3 18V6 M21 18V9 M3 13h18 M3 18h18 M6 8h6v5H6z',
+ bath:'M3 12h18v4a4 4 0 0 1-4 4H7a4 4 0 0 1-4-4z M5 12V5a2 2 0 0 1 4 0 M6 20v2 m12-2v2',
+ leaf:'M20 3C8 2 2 8 5 16c4 9 17 0 15-13Z M4 21 16 9',
+ light:'M9 18h6 M9 21h6 M8 14a6 6 0 1 1 8 0l-1 2H9Z',
+ lamp:'m8 3-4 11h16L16 3Z M12 14v7 M8 21h8',
+ thermometer:'M9 14V5a3 3 0 0 1 6 0v9a5 5 0 1 1-6 0Z M12 8v10',
+ plug:'M8 3v5 m8-5v5 M6 8h12v4a6 6 0 0 1-12 0Z M12 18v4',
+ sensor:'M9 9h6v6H9z M5 5a10 10 0 0 0 0 14 M19 5a10 10 0 0 1 0 14',
+ layers:'m3 7 9-5 9 5-9 5Z m-9 0 9 5 9-5 m-18 5 9 5 9-5',
+ power:'M12 2v10 M6 5a9 9 0 1 0 12 0',info:'M12 11v6 M12 7h.01 M22 12a10 10 0 1 1-20 0 10 10 0 0 1 20 0',
+ shield:'m12 2 9 4v6c0 5-9 10-9 10S3 17 3 12V6Z m-5 10 3 3 5-5',
+ drop:'M12 2S4 11 4 15a8 8 0 0 0 16 0c0-4-8-13-8-13Z',
+ sun:'M12 8a4 4 0 1 1 0 8 4 4 0 0 1 0-8 M12 2v2 m0 16v2 M2 12h2 m16 0h2 M5 5l2 2 m10 10 2 2 M5 19l2-2 M17 7l2-2',
+ settings:'M12 8a4 4 0 1 0 0 8 4 4 0 0 0 0-8 M12 2v3 m0 14v3 M2 12h3 m14 0h3 M5 5l2 2 m10 10 2 2 M5 19l2-2 M17 7l2-2',
+ group:'M3 4h7v7H3z M14 4h7v7h-7z M8 16h8v6H8z M6 11v3h12v-3 M12 14v2',
+ wifi:'M2 8a16 16 0 0 1 20 0 M5 12a11 11 0 0 1 14 0 M8 16a6 6 0 0 1 8 0 M12 20h.01'
+};
+@Component({selector:'ham-icon',standalone:true,template:`<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path [attr.d]="path"/></svg>`})
+export class IconComponent { name = input('house'); get path() { return paths[this.name()] ?? paths['house']; } }
